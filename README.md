@@ -1,7 +1,7 @@
 # Ex.No:1a     Study of Socket Programming
 
-## Name:Hariharan A
-## Register number:212223110013
+## Name:SHRIRAM VR
+## Register number:212224040314
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
