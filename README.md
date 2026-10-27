@@ -59,37 +59,55 @@ Socket programming finds applications in various domains, including web developm
 
 ## client:
 ```
+
 import socket
-from datetime import datetime
-s=socket.socket()
-s.bind(('localhost',8002))
-s.listen(5)
-c,addr=s.accept()
-print("Client Address : ",addr)
-now = datetime.now()
-c.send(now.strftime("Date: %d/%m/%Y and Time: %H:%M:%S").encode())
-ack=c.recv(1024).decode()
-if ack:
-print(ack)
-c.close()
+
+s = socket.socket()
+s.connect(('localhost', 8000))
+
+print(s.getsockname())
+print(s.recv(1024).decode())
+
+s.send("acknowledgement received from the server".encode())
+
+s.close()
+
 ```
 ## Server:
 ```
+
 import socket
-s=socket.socket()
-s.connect(('localhost',8002))
-print(s.getsockname())
-print(s.recv(1024).decode())
-s.send("acknowledgement recived from the server".encode())
+from datetime import datetime
+
+s = socket.socket()
+s.bind(('localhost', 8000))
+s.listen(5)
+
+c, addr = s.accept()
+print("Client Address : ", addr)
+
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+
+ack = c.recv(1024).decode()
+if ack:
+    print(ack)
+
+c.close()
+s.close()
+
 ```
 
 ## Output:
 
 ## client:
-![image](https://github.com/user-attachments/assets/d81a7b92-32ae-49cf-a654-aa40b123f507)
+
+<img width="593" height="238" alt="image" src="https://github.com/user-attachments/assets/6b68d585-d22e-4666-8df6-feb6bd8122aa" />
 
 ## server:
-![image](https://github.com/user-attachments/assets/cfef3d86-e70c-41a7-8161-cbf40794a606)
+
+<img width="575" height="190" alt="image" src="https://github.com/user-attachments/assets/1a45199d-51f7-4206-9912-755912c582e9" />
+
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
