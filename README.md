@@ -59,52 +59,47 @@ Socket programming finds applications in various domains, including web developm
 
 ## client:
 ```
-
 import socket
 
 s = socket.socket()
 s.connect(('localhost', 8000))
 
-print(s.getsockname())
-print(s.recv(1024).decode())
+while True:
+    data = s.recv(1024).decode()
+    print("Server:", data)
 
-s.send("acknowledgement received from the server".encode())
-
-s.close()
-
+    s.send("Acknowledgement Received".encode())
 ```
 ## Server:
 ```
 
 import socket
-from datetime import datetime
 
 s = socket.socket()
 s.bind(('localhost', 8000))
 s.listen(5)
 
+print("Server is waiting for client...")
 c, addr = s.accept()
-print("Client Address : ", addr)
+print("Client connected")
 
-now = datetime.now()
-c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+while True:
+    i = input("Enter a data: ")
+    c.send(i.encode())
 
-ack = c.recv(1024).decode()
-if ack:
+    ack = c.recv(1024).decode()
     print(ack)
 
-c.close()
-s.close()
 
 ```
 
 ## Output:
 
-## client:
+## client & server
 
-<img width="593" height="238" alt="image" src="https://github.com/user-attachments/assets/6b68d585-d22e-4666-8df6-feb6bd8122aa" />
+<img width="1312" height="393" alt="image" src="https://github.com/user-attachments/assets/6473320a-c981-44e2-a620-035cc3e35481" />
 
-## server:
+
 
 <img width="575" height="190" alt="image" src="https://github.com/user-attachments/assets/1a45199d-51f7-4206-9912-755912c582e9" />
 
