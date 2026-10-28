@@ -101,8 +101,5 @@ while True:
 
 
 
-<img width="575" height="190" alt="image" src="https://github.com/user-attachments/assets/1a45199d-51f7-4206-9912-755912c582e9" />
-
-
 ## Result:
 Thus the study of Socket Programming Completed Successfully
